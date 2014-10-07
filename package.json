@@ -1,7 +1,7 @@
 {
   "name": "generator-ink-email",
   "version": "0.1.0",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator for building emails based on Zurb Ink templates using Grunt.",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "sheck/generator-ink-email",

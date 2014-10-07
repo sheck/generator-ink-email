@@ -1,6 +1,6 @@
 # Ink Email Generator
 
-Scaffold and build HTML emails on Foundation Ink templates using Yeoman and Grunt
+Scaffold and build HTML emails on Zurb Ink templates using Yeoman and Grunt
 
 ### Commands
  - `grunt` - compiles and inlines email
