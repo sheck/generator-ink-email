@@ -26,12 +26,6 @@ var InkEmailGenerator = yeoman.generators.Base.extend({
 
   install: function () {
     this.installDependencies();
-  },
-
-  end: function () {
-    this.log(yosay(
-      'We\'re good to go! Run `grunt` to compile or `grunt serve` to preview'
-    ));
   }
 });
 
