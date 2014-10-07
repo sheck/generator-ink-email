@@ -1,6 +1,8 @@
 {
-  "name": "package",
+  "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
-  "dependencies": {}
+  "private": true,
+  "dependencies": {
+    "ink": "~1.0.5"
+  }
 }
-

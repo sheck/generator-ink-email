@@ -9,45 +9,29 @@ var InkEmailGenerator = yeoman.generators.Base.extend({
     this.pkg = require('../package.json');
   },
 
-  prompting: function () {
-    var done = this.async();
-
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the breathtaking InkEmail generator!'
-    ));
-
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
-
-      done();
-    }.bind(this));
-  },
-
   writing: {
     app: function () {
-      this.dest.mkdir('app');
-      this.dest.mkdir('app/templates');
-
-      this.src.copy('_package.json', 'package.json');
-      this.src.copy('_bower.json', 'bower.json');
+      this.copy('_package.json', 'package.json');
+      this.copy('_bower.json', 'bower.json');
+      this.copy('gitignore', '.gitignore');
     },
 
     projectfiles: function () {
       this.src.copy('editorconfig', '.editorconfig');
       this.src.copy('jshintrc', '.jshintrc');
+      this.src.copy('Gruntfile.js', 'Gruntfile.js');
+      this.directory('source', 'source');
     }
   },
 
-  end: function () {
+  install: function () {
     this.installDependencies();
+  },
+
+  end: function () {
+    this.log(yosay(
+      'We\'re good to go! Run `grunt` to compile or `grunt serve` to preview'
+    ));
   }
 });
 
