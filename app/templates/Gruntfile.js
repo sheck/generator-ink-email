@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     uncss: {
       dest: {
         src: ['source/index.html'],
-        dest: 'compiled/assets/styles/tidy.css',
+        dest: 'compiled/styles/tidy.css',
         options: {
           report: 'min' // optional: include to report savings
         }
@@ -64,9 +64,9 @@ module.exports = function(grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '{,*/}*.html',
-          'assets/{,*/}*.css',
-          'assets/images/{,*/}*'
+          'source/{,*/}*.html',
+          'source/styles{,*/}*.css',
+          'source/images/{,*/}*'
         ]
       },
     }
