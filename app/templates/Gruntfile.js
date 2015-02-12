@@ -42,7 +42,7 @@ module.exports = function(grunt) {
     uncss: {
       dest: {
         src: ['compiled/index.html'],
-        dest: 'compiled/styles/tidy.css',
+        dest: 'compiled/styles/main.css',
         options: {
           report: 'min' // optional: include to report savings
         }
