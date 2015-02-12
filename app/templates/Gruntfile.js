@@ -9,20 +9,42 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-    uncss: {
-      dest: {
-        src: ['source/index.html'],
-        dest: 'compiled/styles/tidy.css',
-        options: {
-          report: 'min' // optional: include to report savings
+    clean: ['.tmp', 'compiled'],
+
+    useminPrepare: {
+      options: {
+        dest: 'compiled',
+        flow: {
+          html: {
+            steps: {
+              css: ['concat']
+            },
+            post: {}
+          }
         }
+      },
+      html: 'source/index.html',
+    },
+
+    copy: {
+      html: {
+        files: [{
+          src: 'source/index.html',
+          dest: 'compiled/index.html'
+          }]
       }
     },
 
-    processhtml: {
+    usemin: {
+      html: 'compiled/index.html',
+    },
+
+    uncss: {
       dest: {
-        files: {
-          'compiled/index.html': ['source/index.html']
+        src: ['compiled/index.html'],
+        dest: 'compiled/styles/tidy.css',
+        options: {
+          report: 'min' // optional: include to report savings
         }
       }
     },
@@ -61,7 +83,7 @@ module.exports = function(grunt) {
     watch: {
       livereload: {
         options: {
-          livereload: '<%= connect.options.livereload %>'
+          livereload: '<%%= connect.options.livereload %>'
         },
         files: [
           'source/{,*/}*.html',
@@ -72,7 +94,18 @@ module.exports = function(grunt) {
     }
 
   });
+
+  grunt.registerTask('build', [
+    'clean',
+    'useminPrepare',
+    'concat',
+    'copy',
+    'usemin',
+    <% if (uncss) { %>'uncss',<% } else { %>//'uncss',<% } %>
+    'premailer'
+  ]);
+
   grunt.registerTask('default', ['build']);
-  grunt.registerTask('build', ['uncss', 'processhtml', 'premailer']);
+
   grunt.registerTask('serve', ['connect', 'watch']);
 }

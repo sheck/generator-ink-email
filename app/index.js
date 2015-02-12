@@ -9,6 +9,19 @@ var InkEmailGenerator = yeoman.generators.Base.extend({
     this.pkg = require('../package.json');
   },
 
+  prompting: function () {
+    var done = this.async();
+    this.prompt({
+      type    : 'confirm',
+      name    : 'uncss',
+      message : 'Would you like to use UNCSS?',
+      default : true
+    }, function (answers) {
+      this.uncss = answers.uncss;
+      done();
+    }.bind(this));
+  },
+
   writing: {
     app: function () {
       this.dest.mkdir('source');
@@ -18,10 +31,13 @@ var InkEmailGenerator = yeoman.generators.Base.extend({
       this.copy('gitignore', '.gitignore');
     },
 
+    gruntfile: function () {
+      this.template('Gruntfile.js');
+    },
+
     projectfiles: function () {
       this.src.copy('editorconfig', '.editorconfig');
       this.src.copy('jshintrc', '.jshintrc');
-      this.src.copy('Gruntfile.js', 'Gruntfile.js');
       this.directory('source', 'source');
     }
   },
