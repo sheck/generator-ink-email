@@ -12,7 +12,6 @@ var InkEmailGenerator = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.dest.mkdir('source');
-      this.dest.mkdir('source/images');
 
       this.copy('_package.json', 'package.json');
       this.copy('_bower.json', 'bower.json');
