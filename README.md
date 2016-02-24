@@ -14,3 +14,7 @@ There currently isn't an implementation for sending emails from the command
 line (pull request welcome!). One way to send a test email is to run the full 
 build with `grunt build` and then paste contents of compiled/email-inlined.html 
 into a service like [Putsmail](https://putsmail.com/)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sheck/generator-ink-email/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
